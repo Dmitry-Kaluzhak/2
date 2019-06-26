@@ -1,0 +1,14 @@
+<context>
+  <input pattern="* (привет*|здравствуй*) *">
+    <output value="Привет $UserName!" if="full($UserName)"/>
+    
+    <context if="empty($UserName)">
+      <output value="Привет! А как тебя зовут?"/>
+
+        <input pattern="$Text">
+          <var name="UserName" value="cap($Text)" scope="user"/>
+          <output value="Приятно познакомиться, $UserName!"/>
+        </input>
+      </context>
+    </input>
+</context>
